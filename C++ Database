@@ -1,0 +1,54 @@
+#include <iostream>
+#include <conio.h>
+#include <fstream>
+#include <stdio.h>
+using namespace std;
+struct work
+{
+    char name[100];
+    int id;
+    char job[10];
+}p[10];
+int main()
+{
+    int i,b,d;
+    char f[20];
+  jumpe:
+  for(i=1;;)
+  {
+      cout<<"\nThe db++ Database application\n1-To enter the data\n2-To read the data\n3-To save the data\n";
+      cin>>d;
+      switch(d)
+     {  case 1:
+            cout << "enter the no of workers to get the data:" << endl;
+            cin>>b;
+            for(i=1;i<=b;++i)
+            {
+             cout<<"\nenter the name of the worker:\n";
+             cin>>p[i].name;
+             cout<<"\nenter the id no of the worker:\n";
+             cin>>p[i].id;
+             cout<<"\nenter the job of the worker:\n";
+             cin>>p[i].job;
+            }
+            goto jumpe;
+        case 2:
+             for(i=1;i<=b;++i)
+             {
+                               cout<<"\nThe "<<i<<" name is "<<p[i].name<<" with id no "<<p[i].id<<"\n";
+             }
+             goto jumpe;
+        case 3:
+             ofstream file;
+             file.open ("report.txt");
+             for(i=1;i<=b;++i)
+             {
+              file <<"\nThe "<<i<<" name is "<<p[i].name<<" with id no "<<p[i].id<<"\n";
+             }
+             file.close();
+             cout<<"the file is saved";
+             getch();
+             goto jumpe;
+      } 
+   }
+}
